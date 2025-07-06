@@ -307,12 +307,20 @@ const SettingsPage = () => {
                       By accessing or using PromptMail, you agree to comply with and be bound by these terms. You must not misuse our platform or attempt unauthorized access. We reserve the right to suspend or terminate accounts violating these terms.
                     </p>
                   </article>
-                  <article className="p-3 sm:p-4 rounded-lg bg-white dark:bg-gray-900 border border-gray-500 dark:border-gray-400">
-                    <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-2 text-sm sm:text-base">Privacy Policy</h3>
-                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                      We collect only the necessary information to personalize your experience and never share it with third parties without consent. All data is stored securely, and you can request its removal anytime.
-                    </p>
-                  </article>
+                 <article className="p-3 sm:p-4 rounded-lg bg-white dark:bg-gray-900 border border-gray-500 dark:border-gray-400">
+  <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-2 text-sm sm:text-base">Privacy Policy</h3>
+  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+    We collect only the necessary information to personalize your experience and never share it with third parties without consent. All data is stored securely, and you can request its removal anytime.{" "}
+    <Link
+      href="/privacypolicy"
+      className="underline text-purple-600 dark:text-purple-300 hover:text-purple-800 dark:hover:text-purple-200 transition-colors"
+    >
+      Learn more
+    </Link>
+    .
+  </p>
+</article>
+
                   <article className="p-3 sm:p-4 rounded-lg bg-white dark:bg-gray-900 border border-gray-500 dark:border-gray-400">
                     <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-2 text-sm sm:text-base">Cookie Policy</h3>
                     <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">

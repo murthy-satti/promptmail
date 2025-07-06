@@ -35,7 +35,17 @@ export default function SignInBtn() {
           <strong>Note:</strong> This app is not published publicly. Only test users added by the admin can sign in and use the website.
           <br />
           If you want to test or use the app, please contact the admin.
+          <br />
+          Read our{" "}
+          <a
+            href="/privacypolicy"
+            className="underline font-medium hover:text-yellow-800 dark:hover:text-yellow-300 transition-colors"
+          >
+            Privacy Policy 
+          </a>
+           <span> to know more about the website.</span> 
         </div>
+
 
         <a
           href="https://wa.me/919121723149"
