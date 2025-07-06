@@ -20,8 +20,7 @@ export const authOptions = {
 
   session: {
     strategy: "jwt",
-    maxAge: 60 * 60 * 24, // 1 day
-    updateAge: 60 * 60,   // Refresh token age, not used here
+    maxAge: 60*60 * 24* 7, // 1 day
   },
 
   callbacks: {
@@ -54,9 +53,12 @@ export const authOptions = {
     async jwt({ token, account }) {
       if (account) {
         token.accessToken = account.access_token;
+        token.accessTokenExpires = Date.now() + account.expires_at * 1000; // usually 1 hour
+
       }
       return token;
     },
+
 
     async session({ session, token }) {
       session.accessToken = token.accessToken;

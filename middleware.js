@@ -6,6 +6,7 @@ const protectedRoutes = ['/', '/settings'];
 export async function middleware(req) {
   const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
 
+
   const isProtected = protectedRoutes.includes(req.nextUrl.pathname);
 
   if (isProtected && !token) {
