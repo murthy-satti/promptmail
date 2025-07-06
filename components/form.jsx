@@ -146,7 +146,7 @@ export default function EmailComposer() {
       <section>
         {/* Email Form */}
         <div className="bg-white/95 dark:bg-gray-900 backdrop-blur-sm shadow-xl rounded-2xl px-4 py-2 space-y-2">
-          <h3 className="text-xl font-semibold text-purple-700 dark:text-purple-400 ">Compose Email</h3>
+          <h2 className="text-xl font-semibold text-purple-700 dark:text-purple-400 ">Compose Email</h2>
           <ToastContainer />
           <div className="space-y-4">
             <div>
