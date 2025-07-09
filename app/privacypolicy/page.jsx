@@ -1,19 +1,18 @@
 // app/privacy/page.jsx
 export const metadata = {
-    title: "Privacy Policy | PromptMail",
     description: "Read the privacy policy for PromptMail, detailing data collection, usage, and user security.",
 };
 
 export default function PrivacyPolicy() {
     return (
-        <div className="min-h-screen  py-8 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen  py-8 px-4 sm:px-6 lg:px-8 mt-15">
             <div className="max-w-4xl mx-auto">
                 {/* Header Section */}
-                <div className="text-center mb-8">
-                    <h1 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent mb-4">
+                <div className="text-center mb-4">
+                    <h2 className="text-2xl sm:text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent mb-4">
                         Privacy Policy
-                    </h1>
-                    <p className="text-gray-900 font-semibold dark:text-purple-400 text-lg max-w-2xl mx-auto">
+                    </h2>
+                    <p className="text-gray-900 font-semibold dark:text-purple-400 text-md md:text-lg max-w-2xl mx-auto">
                         Your privacy is important to us. This policy explains how we collect, use, and protect your information.
                     </p>
                 </div>
@@ -193,27 +192,7 @@ export default function PrivacyPolicy() {
                         </div>
                     </section>
 
-                    {/* Section 8 */}
-                    <section className="mb-8">
-                        <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100 flex items-center">
-                            8. Your Rights
-                        </h2>
-                        <div className="grid gap-4 sm:grid-cols-1 lg:grid-cols-2">
-                            <div className="bg-green-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-400 dark:border-gray-200">
-                                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Access & Update</h3>
-                                <p className="text-gray-900 dark:text-gray-100 text-sm">
-                                    You can view and update your profile information at any time through your account settings.
-                                </p>
-                            </div>
-                            <div className="bg-green-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-400 dark:border-gray-200">
-                                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Data Deletion</h3>
-                                <p className="text-gray-900 dark:text-gray-100 text-sm">
-                                    You can request complete deletion of your data by contacting our support team.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-
+                  
                     {/* Contact Section */}
                     <section className="mb-8">
                         <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100 flex items-center">
