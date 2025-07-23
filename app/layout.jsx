@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
 
           {children}
         </SessionWrapper>
-        <Footer/>
+        {/* <Footer/> */}
       </body>
     </html>
   )
