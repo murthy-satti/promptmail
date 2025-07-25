@@ -7,9 +7,8 @@ import {
   FileText,
   LogOut,
   Settings,
-  X
+  X, Sun, Moon
 } from 'lucide-react';
-import ThemeToggle from '@/components/theme';
 import Link from 'next/link';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -22,6 +21,7 @@ const SettingsPage = () => {
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [termsDropdownOpen, setTermsDropdownOpen] = useState(false);
   const [signOutModalOpen, setSignOutModalOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -57,6 +57,14 @@ const SettingsPage = () => {
     if (session?.user?.email) fetchUser();
   }, [session]);
 
+  //theme toggle
+  const toggleTheme = async () => {
+    const next = isDarkMode ? 'light' : 'dark';
+    // Apply theme to document
+    document.documentElement.setAttribute('data-theme', next);
+    document.documentElement.classList.toggle('dark', next === 'dark');
+    setIsDarkMode(next === 'dark');
+  };
 
   //edit req
   const handleChange = (field) => (e) => {
@@ -121,11 +129,36 @@ const SettingsPage = () => {
         </div>
 
         {/* Settings Content */}
-        <div className="grid gap-4 sm:gap-6">
+        <div className="grid gap-4 ">
 
           {/* Theme Toggle Section */}
 
-          <ThemeToggle />
+          <section className="p-6 rounded-lg border bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="p-2">
+                  <Sun className="w-5 h-5 text-yellow-500 dark:hidden" />
+                  <Moon className="w-5 h-5 text-white hidden dark:inline" />
+                </div>
+                <div>
+                  <h2 className="font-semibold text-gray-900 dark:text-white">Theme</h2>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    Switch between light and dark mode
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={toggleTheme}
+                aria-label="Toggle theme"
+                className="relative w-12 h-6 rounded-full transition-colors duration-200 bg-gray-300 dark:bg-blue-600"
+              >
+                <div
+                  className="absolute w-5 h-5 bg-white rounded-full top-0.5 transition-transform duration-200 translate-x-0.5 dark:translate-x-6"
+                />
+              </button>
+
+            </div>
+          </section>
 
           {/* Profile Section */}
           <section
@@ -304,15 +337,15 @@ const SettingsPage = () => {
                   <article className="p-3 sm:p-4 rounded-lg bg-white dark:bg-gray-900 border border-gray-500 dark:border-gray-400">
                     <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-2 text-sm sm:text-base">Terms of Service</h3>
                     <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                      By accessing or using PromptMail, you agree to comply with and be bound by these terms. You must not misuse our platform or attempt unauthorized access. 
-                       <Link
+                      By accessing or using PromptMail, you agree to comply with and be bound by these terms. You must not misuse our platform or attempt unauthorized access.
+                      <Link
                         href="/terms"
                         className="underline text-purple-600 dark:text-purple-300 hover:text-purple-800 dark:hover:text-purple-200 transition-colors"
                       >
                         Learn more
                       </Link>
                     </p>
-                   
+
                   </article>
                   <article className="p-3 sm:p-4 rounded-lg bg-white dark:bg-gray-900 border border-gray-500 dark:border-gray-400">
                     <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-2 text-sm sm:text-base">Privacy Policy</h3>
