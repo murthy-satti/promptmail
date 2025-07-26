@@ -101,13 +101,13 @@ const SettingsPage = () => {
   };
 
   return (
-    <main className="min-h-screen transition-colors mt-16 duration-200">
+    <main className="min-h-screen transition-colors mt-18 duration-200">
       <div className="max-w-4xl mx-auto p-4 sm:p-6">
         <ToastContainer />
 
         {/* Header */}
         <div className="mb-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div>
+          <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
             <h1 className="text-2xl sm:text-3xl font-bold flex items-center gap-2 text-black dark:text-white">
               <Settings className="w-6 h-6 sm:w-8 sm:h-8" />
               Settings
@@ -136,13 +136,13 @@ const SettingsPage = () => {
           <section className="p-6 rounded-lg border bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="p-2">
-                  <Sun className="w-5 h-5 text-yellow-500 dark:hidden" />
+                <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
+                  <Sun className="w-5 h-5 text-orange-800 dark:hidden" />
                   <Moon className="w-5 h-5 text-white hidden dark:inline" />
                 </div>
                 <div>
                   <h2 className="font-semibold text-gray-900 dark:text-white">Theme</h2>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300">
                     Switch between light and dark mode
                   </p>
                 </div>
