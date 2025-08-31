@@ -6,13 +6,13 @@ export default function Navbar() {
   const userEmail = "your.email@example.com";
 
   return (
-   <header className="fixed top-0 left-0 right-0 z-50 p-2 border-b shadow-lg bg-gradient-to-r from-red-400 via-orange-300 to-red-400 border-purple-500/20 dark:bg-gray-900 dark:bg-none">
+   <header className="fixed top-0 left-0 right-0 z-50 p-2 border-b shadow-lg bg-gradient-to-r from-red-400 via-orange-300 to-red-400 border-purple-500/20 dark:bg-[#181818] dark:bg-none">
   <div className="max-w-screen mx-auto px-1 sm:px-4 lg:px-6"> 
     <div className="flex justify-between items-center h-16">
 
       {/* Logo + Title */}
       <div className="flex items-center ">
-        <Image src='/PM.png' alt='logo' width={70} height={70} priority />
+        {/* <Image src='/PM.png' alt='logo' width={70} height={70} priority /> */}
         <h1 className="text-xl sm:text-2xl font-bold text-[#3B0A00] dark:text-[#00F0FF]">
           PromptMail
         </h1>

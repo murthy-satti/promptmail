@@ -140,12 +140,12 @@ export default function EmailComposer() {
 
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-18 sm:mt-20 ">
+    <main className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-18 sm:mt-20 ">
 
        {/* Email Form */}
       <section>
         {/* Email Form */}
-        <div className="bg-white/95 dark:bg-gray-900 backdrop-blur-sm shadow-xl rounded-2xl px-4 py-2 space-y-2">
+        <div className="bg-white/95 dark:bg-[#181818] backdrop-blur-sm shadow-xl rounded-2xl px-4 py-2 space-y-2">
           <h2 className="text-xl font-semibold text-purple-700 dark:text-purple-400 ">Compose Email</h2>
           <ToastContainer />
           <div className="space-y-4">
@@ -156,7 +156,7 @@ export default function EmailComposer() {
                 placeholder="recipient@example.com"
                 value={formData.to}
                 onChange={(e) => setFormData({ ...formData, to: e.target.value })}
-                className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full border border-gray-300 dark:border-gray-600 dark:bg-[#212121] dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               />
             </div>
             <div>
@@ -166,7 +166,7 @@ export default function EmailComposer() {
                 placeholder="Email subject"
                 value={formData.subject}
                 onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full border border-gray-300 dark:border-gray-600 dark:bg-[#212121] dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               />
             </div>
 
@@ -177,7 +177,7 @@ export default function EmailComposer() {
                 value={formData.body}
                 onChange={(e) => setFormData({ ...formData, body: e.target.value })}
                 rows={10}
-                className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                className="w-full border border-gray-300 dark:border-gray-600 dark:bg-[#212121] dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
               />
             </div>
 
@@ -234,7 +234,7 @@ export default function EmailComposer() {
       </section>
 
       {/* Prompt + Generate */}
-      <section className="bg-gradient-to-br from-white/90 to-purple-50/90 dark:from-gray-900 dark:to-purple-900/30 backdrop-blur-sm shadow-xl rounded-2xl py-2 px-4">
+      <section className="bg-gradient-to-br from-white/90 to-purple-50/90 dark:bg-none dark:bg-[#181818] backdrop-blur-sm shadow-xl rounded-2xl py-2 px-4">
         <div className="flex items-center space-x-2 mb-4">
           <Sparkles className="h-6 w-6 text-purple-600 dark:text-purple-400" />
           <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">AI Assistant</h2>
@@ -247,7 +247,7 @@ export default function EmailComposer() {
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           rows={3}
-          className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 p-3 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none mb-4"
+          className="w-full border border-gray-300 dark:border-gray-600 dark:bg-[#212121] dark:text-gray-100 dark:placeholder-gray-400 p-3 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none mb-4"
         />
         <button
           onClick={handleGenerate}
@@ -270,7 +270,7 @@ export default function EmailComposer() {
           <strong className='text-purple-600 dark:text-purple-400'>Note:</strong> This website does not verify the "To" email address you enter. Please ensure that the recipient's address is correct before sending.
         </p>
 
-       <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md p-5 mt-2">
+       <div className="bg-white dark:bg-[#212121] border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md p-5 mt-2">
       <button
         onClick={() => setOpen(!open)}
         className="flex items-center justify-between w-full text-left text-purple-700 dark:text-purple-400 text-xl font-semibold mb-2"
@@ -293,10 +293,8 @@ export default function EmailComposer() {
     </div>
       </section>
 
-     
-
-
-    </div>
+    
+    </main>
 
   );
 }
