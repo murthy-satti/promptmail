@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import SessionWrapper from "@/components/session";
 import { Toaster } from "react-hot-toast";
+import { cookies } from "next/headers";
 
 
 
@@ -34,8 +35,12 @@ export const metadata = {
 
 
 export default function RootLayout({ children }) {
+  const cookieStore = cookies();
+  const theme = cookieStore.get('theme')?.value || 'light';
+  const isDark = theme === 'dark';
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-theme={theme} className={isDark ? 'dark' : ''}>
       <body
         className="bg-gradient-to-br from-red-200 via-orange-300 to-red-100 dark:bg-gray-800 dark:bg-none"
       >

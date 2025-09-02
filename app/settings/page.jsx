@@ -20,7 +20,13 @@ const SettingsPage = () => {
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [termsDropdownOpen, setTermsDropdownOpen] = useState(false);
   const [signOutModalOpen, setSignOutModalOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof document !== 'undefined') {
+      const savedTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      return savedTheme === 'dark';
+    }
+    return false;
+  });
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -56,6 +62,7 @@ const SettingsPage = () => {
     if (session?.user?.email) fetchUser();
   }, [session]);
 
+
   //theme toggle
   const toggleTheme = async () => {
     const next = isDarkMode ? 'light' : 'dark';
@@ -63,6 +70,9 @@ const SettingsPage = () => {
     document.documentElement.setAttribute('data-theme', next);
     document.documentElement.classList.toggle('dark', next === 'dark');
     setIsDarkMode(next === 'dark');
+    
+    // Save to cookie
+    document.cookie = `theme=${next}; path=/; max-age=31536000`; // 1 year
   };
 
   //edit req
