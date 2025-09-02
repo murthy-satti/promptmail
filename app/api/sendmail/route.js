@@ -18,6 +18,30 @@ export async function POST(req) {
     return new Response("Unauthorized", { status: 401 });
   }
 
+  // Check if session has token errors or expired
+  if (session.error === "RefreshAccessTokenError" || session.error === "TokenExpired") {
+    return new Response(JSON.stringify({ 
+      success: false, 
+      error: "❌ Failed: Can't create new access token for user. Please re-login.", 
+      needsReauth: true 
+    }), {
+      status: 401,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
+  // Check if access token exists
+  if (!session.accessToken) {
+    return new Response(JSON.stringify({ 
+      success: false, 
+      error: "❌ Failed: No access token available. Please re-login.", 
+      needsReauth: true 
+    }), {
+      status: 401,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
 
   // Convert Web request to Node request
   const nodeReq = Object.assign(Readable.fromWeb(req.body), {
@@ -64,7 +88,10 @@ export async function POST(req) {
     process.env.GOOGLE_CLIENT_ID,
     process.env.GOOGLE_CLIENT_SECRET
   );
-  oAuth2Client.setCredentials({ access_token: session.accessToken });
+  oAuth2Client.setCredentials({ 
+    access_token: session.accessToken,
+    refresh_token: session.refreshToken
+  });
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
