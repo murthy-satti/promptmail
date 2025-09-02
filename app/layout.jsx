@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import SessionWrapper from "@/components/session";
+import { Toaster } from "react-hot-toast";
+
 
 
 export const metadata = {
@@ -39,6 +41,52 @@ export default function RootLayout({ children }) {
       >
         <SessionWrapper>
           <Navbar />
+         <Toaster
+  position="top-center"
+  toastOptions={{
+    // ✅ Normal / Default toast (blue)
+    style: {
+      background: '#dbeafe', // Tailwind blue-100
+      color: '#1e3a8a',      // Tailwind blue-900
+      border: '1px solid #93c5fd', // Tailwind blue-300
+      fontWeight: 500,
+    },
+    iconTheme: {
+      primary: '#3b82f6',   // Tailwind blue-500
+      secondary: '#dbeafe', // Tailwind blue-100
+    },
+
+    // ✅ Success toast (green)
+    success: {
+      style: {
+        background: '#d1fae5',
+        color: '#065f46',
+        border: '1px solid #6ee7b7',
+        fontWeight: 500,
+      },
+      iconTheme: {
+        primary: '#10b981',
+        secondary: '#d1fae5',
+      },
+    },
+
+    // ✅ Error toast (red)
+    error: {
+      style: {
+        background: '#fee2e2',
+        color: '#991b1b',
+        border: '1px solid #fca5a5',
+        fontWeight: 500,
+      },
+      iconTheme: {
+        primary: '#ef4444',
+        secondary: '#fee2e2',
+      },
+    },
+  }}
+/>
+
+
 
           {children}
         </SessionWrapper>

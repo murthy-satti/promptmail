@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Send, Sparkles } from 'lucide-react';
-import { ToastContainer, toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 import { useSession } from 'next-auth/react';
 import { ChevronDown } from "lucide-react";
 
@@ -16,8 +16,8 @@ export default function EmailComposer() {
   const [files, setFiles] = useState([])
   const [prompt, setPrompt] = useState('');
 
-   const [open, setOpen] = useState(false);
-   
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const isMobile = window.innerWidth < 640; // Tailwind's `sm`
@@ -85,11 +85,15 @@ export default function EmailComposer() {
 
         setPrompt('');
       } else {
-        toast.info('Failed to generate email. Please try again.');
+        toast.error('Failed to generate email. Please try again.', {
+          icon: "❌",
+        });
       }
     } catch (err) {
       console.error("Error:", err);
-      toast.error(`Error: ${err.message}`);
+      toast.error(`Error: ${err.message}`, {
+        icon: "❌",
+      });
     } finally {
       setLoading(false);
     }
@@ -101,7 +105,7 @@ export default function EmailComposer() {
     const { to, subject, body } = formData;
 
     if (!to || !subject || !body) {
-      toast.info("Please fill in all fields before sending.");
+      toast("Please fill in all fields before sending.", { icon: "🤦‍♂️" });
       return;
     }
 
@@ -122,15 +126,21 @@ export default function EmailComposer() {
 
       const result = await res.json();
       if (res.ok) {
-        toast.success(`Email sent successfully to ${to}`);
+        toast.success(`Email sent successfully to ${to}`, {
+          icon: "✅",
+        });
         setFormData({ to: '', subject: '', body: '' });
         setFiles([]);
       } else {
-        toast.error(result?.error || "Failed to send email");
+        toast.error(result?.error || "Failed to send email", {
+          icon: "❌",
+        });
       }
     } catch (err) {
       console.error("Email send error:", err);
-      toast.error(err.message || "Internal server error");
+      toast.error(err.message || "Internal server error", {
+        icon: "❌",
+      });
     } finally {
       setEmailLoading(false);
     }
@@ -140,14 +150,14 @@ export default function EmailComposer() {
 
 
   return (
-    <main className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-18 sm:mt-20 ">
+    <main className="grid grid-cols-1 lg:grid-cols-2 gap-5 pt-18 sm:pt-20 min-h-screen">
 
-       {/* Email Form */}
-      <section>
+      {/* Email Form */}
+       <section className="flex  ">
         {/* Email Form */}
-        <div className="bg-white/95 dark:bg-[#181818] backdrop-blur-sm shadow-xl rounded-2xl px-4 py-2 space-y-2">
+        <div className="flex-1 bg-white/95 dark:bg-gray-900 backdrop-blur-sm shadow-xl rounded-2xl px-4 py-2 space-y-2">
           <h2 className="text-xl font-semibold text-purple-700 dark:text-purple-400 ">Compose Email</h2>
-          <ToastContainer />
+
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">To :</label>
@@ -156,7 +166,7 @@ export default function EmailComposer() {
                 placeholder="recipient@example.com"
                 value={formData.to}
                 onChange={(e) => setFormData({ ...formData, to: e.target.value })}
-                className="w-full border border-gray-300 dark:border-gray-600 dark:bg-[#212121] dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               />
             </div>
             <div>
@@ -166,7 +176,7 @@ export default function EmailComposer() {
                 placeholder="Email subject"
                 value={formData.subject}
                 onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                className="w-full border border-gray-300 dark:border-gray-600 dark:bg-[#212121] dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               />
             </div>
 
@@ -177,7 +187,7 @@ export default function EmailComposer() {
                 value={formData.body}
                 onChange={(e) => setFormData({ ...formData, body: e.target.value })}
                 rows={10}
-                className="w-full border border-gray-300 dark:border-gray-600 dark:bg-[#212121] dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
               />
             </div>
 
@@ -219,7 +229,7 @@ export default function EmailComposer() {
                   onClick={handleSend}
                   disabled={emailLoading}
                   className={`bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-3 rounded-lg flex items-center justify-center space-x-2 font-medium transition-all duration-200
-    ${emailLoading ? 'opacity-50 cursor-not-allowed' : 'hover:from-green-700 hover:to-emerald-700'}`}
+    ${emailLoading ? 'opacity-50 cursor-not-allowed' : 'hover:from-green-700 hover:to-emerald-700'} cursor-pointer`}
                 >
                   <Send className="h-4 w-4" />
                   <span>{emailLoading ? 'Sending...' : 'Send Email'}</span>
@@ -234,7 +244,8 @@ export default function EmailComposer() {
       </section>
 
       {/* Prompt + Generate */}
-      <section className="bg-gradient-to-br from-white/90 to-purple-50/90 dark:bg-none dark:bg-[#181818] backdrop-blur-sm shadow-xl rounded-2xl py-2 px-4">
+     <section className="flex">
+      <div className="flex-1 bg-gradient-to-br from-white/90 to-purple-50/90 dark:bg-none dark:bg-gray-900 backdrop-blur-sm shadow-xl rounded-2xl py-2 px-4">
         <div className="flex items-center space-x-2 mb-4">
           <Sparkles className="h-6 w-6 text-purple-600 dark:text-purple-400" />
           <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">AI Assistant</h2>
@@ -247,12 +258,12 @@ export default function EmailComposer() {
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           rows={3}
-          className="w-full border border-gray-300 dark:border-gray-600 dark:bg-[#212121] dark:text-gray-100 dark:placeholder-gray-400 p-3 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none mb-4"
+          className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400 p-3 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none mb-4"
         />
         <button
           onClick={handleGenerate}
           disabled={loading || !prompt.trim()}
-          className="w-full bg-gradient-to-r mb-5 from-purple-600 to-pink-600 dark:from-purple-700 dark:to-pink-700 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-pink-700 dark:hover:from-purple-800 dark:hover:to-pink-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 transition-all duration-200"
+          className="cursor-pointer w-full bg-gradient-to-r mb-5 from-purple-600 to-pink-600 dark:from-purple-700 dark:to-pink-700 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-pink-700 dark:hover:from-purple-800 dark:hover:to-pink-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 transition-all duration-200"
         >
           {loading ? (
             <>
@@ -270,30 +281,30 @@ export default function EmailComposer() {
           <strong className='text-purple-600 dark:text-purple-400'>Note:</strong> This website does not verify the "To" email address you enter. Please ensure that the recipient's address is correct before sending.
         </p>
 
-       <div className="bg-white dark:bg-[#212121] border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md p-5 mt-2">
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex items-center justify-between w-full text-left text-purple-700 dark:text-purple-400 text-xl font-semibold mb-2"
-      >
-        <span>How PromptMail Works</span>
-        <ChevronDown className={`h-5 w-5 transition-transform ${open ? "rotate-180" : ""}`} />
-      </button>
+        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md p-5 mt-2">
+          <button
+            onClick={() => setOpen(!open)}
+            className="flex items-center justify-between w-full text-left text-purple-700 dark:text-purple-400 text-xl font-semibold mb-2"
+          >
+            <span>How PromptMail Works</span>
+            <ChevronDown className={`h-5 w-5 transition-transform ${open ? "rotate-180" : ""}`} />
+          </button>
 
-      {open && (
-        <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-          <p><span className="font-medium text-gray-800 dark:text-gray-100">1. Describe your email:</span> Tell our AI what kind of email you want to send.</p>
-          <p><span className="font-medium text-gray-800 dark:text-gray-100">2. AI generates content:</span> Our AI creates a professional email based on your description.</p>
-          <p><span className="font-medium text-gray-800 dark:text-gray-100">3. Review and edit:</span> Make any changes to the generated email.</p>
-          <p><span className="font-medium text-gray-800 dark:text-gray-100">4. Send:</span> Click send to deliver your email.</p>
-          <p className="pt-2 text-sm text-black dark:text-gray-200">
-            <strong className='text-purple-600 dark:text-purple-400'>Note:</strong> Complete your profile to get fully personalized emails tailored to you.
-          </p>
+          {open && (
+            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p><span className="font-medium text-gray-800 dark:text-gray-100">1. Describe your email:</span> Tell our AI what kind of email you want to send.</p>
+              <p><span className="font-medium text-gray-800 dark:text-gray-100">2. AI generates content:</span> Our AI creates a professional email based on your description.</p>
+              <p><span className="font-medium text-gray-800 dark:text-gray-100">3. Review and edit:</span> Make any changes to the generated email.</p>
+              <p><span className="font-medium text-gray-800 dark:text-gray-100">4. Send:</span> Click send to deliver your email.</p>
+              <p className="pt-2 text-sm text-black dark:text-gray-200">
+                <strong className='text-purple-600 dark:text-purple-400'>Note:</strong> Complete your profile to get fully personalized emails tailored to you.
+              </p>
+            </div>
+          )}
         </div>
-      )}
-    </div>
-      </section>
+      </div>
 
-    
+</section>
     </main>
 
   );

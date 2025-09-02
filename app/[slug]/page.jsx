@@ -14,7 +14,7 @@ export default async function TemplatePage({ params }) {
   }
 
   return (
-    <main className="mt-15">
+    <main className="mt-20 md:mt-15">
     <ProfessionalEmail
       initialSubject={template.subject}
       initialBody={template.body}

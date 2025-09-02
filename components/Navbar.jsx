@@ -6,7 +6,7 @@ export default function Navbar() {
   const userEmail = "your.email@example.com";
 
   return (
-   <header className="fixed top-0 left-0 right-0 z-50 p-2 border-b shadow-lg bg-gradient-to-r from-red-400 via-orange-300 to-red-400 border-purple-500/20 dark:bg-[#181818] dark:bg-none">
+   <header className="fixed top-0 left-0 right-0 z-50 p-2 border-b shadow-lg bg-gradient-to-r from-red-400 via-orange-300 to-red-400 border-purple-500/20 dark:bg-gray-900 dark:bg-none">
   <div className="max-w-screen mx-auto px-1 sm:px-4 lg:px-6"> 
     <div className="flex justify-between items-center h-16">
 

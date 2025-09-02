@@ -27,14 +27,14 @@ export default async function TemplateLibrary() {
   ];
 
   return (
-    <main className="bg-transparent dark:bg-[#212121] min-h-screen text-white px-2 sm:px-6 lg:px-12 py-12 mt-10">
+    <main className="bg-transparent dark:bg-bg-800 min-h-screen text-white px-2 sm:px-6 lg:px-12 py-12 mt-10">
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-5 text-gray-900 dark:text-gray-100">
         Our Email Template Library
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
         {/* Render Blank Email first */}
-        <div className="rounded-xl overflow-hidden shadow-lg bg-[#F1F5FF] dark:bg-[#181818] hover:shadow-xl transition p-4">
+        <div className="rounded-xl overflow-hidden shadow-lg bg-[#F1F5FF] dark:bg-gray-900 hover:shadow-xl transition p-4">
           <img
             src={blankEmail.image}
             alt={blankEmail.title}
@@ -54,7 +54,7 @@ export default async function TemplateLibrary() {
         {fetchedTemplates.map((t, idx) => (
           <div
             key={t._id}
-            className="rounded-xl overflow-hidden shadow-lg bg-[#F1F5FF] dark:bg-[#181818] hover:shadow-xl transition p-4"
+            className="rounded-xl overflow-hidden shadow-lg bg-[#F1F5FF] dark:bg-gray-900 hover:shadow-xl transition p-4"
           >
             <img
               src={templates[idx]?.image || "/blankemail.png"}

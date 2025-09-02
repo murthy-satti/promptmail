@@ -36,54 +36,58 @@ export default function ProfessionalEmail({ initialSubject, initialBody, templat
   };
 
   return (
-    <main className="min-h-screen flex justify-center items-start p-8 bg-transparent dark:bg-[#181818]">
-      <div className="w-full max-w-4xl bg-[#F1F5FF] dark:bg-[#212121] p-6 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 space-y-6">
+    <main className="min-h-screen flex justify-center items-start md:p-8 bg-transparent dark:bg-gray-800">
+      <div className="w-full max-w-4xl bg-[#F1F5FF] dark:bg-gray-800 p-2 md:p-6 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 space-y-6">
         <h2 className="text-xl sm:text-2xl font-bold text-center text-gray-800 dark:text-gray-100">
           {templateTitle || "Professional Email Template"}
         </h2>
 
         {/* To */}
-       {/* To */}
-<div className="flex items-center mb-4">
-  <label className="w-15 text-sm font-medium text-gray-700 dark:text-gray-300">
-    To:
-  </label>
-  <input
-    type="email"
-    placeholder="recipient@example.com"
-    value={to}
-    onChange={(e) => setTo(e.target.value)}
-    className="flex-1 border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-[#181818] dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-  />
-</div>
+        {/* To */}
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-900 dark:text-gray-300 mb-1">
+            To:
+          </label>
+          <input
+            type="email"
+            placeholder="recipient@example.com"
+            value={to}
+            onChange={(e) => setTo(e.target.value)}
+            className="w-full border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          />
+        </div>
 
-{/* Subject */}
-<div className="flex items-center mb-4">
-  <label className="w-15 text-sm font-medium text-gray-700 dark:text-gray-300">
-    Subject:
-  </label>
-  <input
-    type="text"
-    placeholder="Email subject"
-    value={subject}
-    onChange={(e) => setSubject(e.target.value)}
-    className="flex-1 border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-[#181818] dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-  />
-</div>
+        {/* Subject */}
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-900 dark:text-gray-300 mb-1">
+            Subject:
+          </label>
+          <input
+            type="text"
+            placeholder="Email subject"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+            className="w-full border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          />
+        </div>
+
 
 
 
         {/* Body */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Body :</label>
+          <label className="block text-sm font-medium text-gray-900 dark:text-gray-300 mb-2">
+            Body :
+          </label>
           <textarea
             placeholder="Your email content will appear here..."
             value={body}
             onChange={(e) => setBody(e.target.value)}
-            rows={10}
-            className="w-full border border-gray-300 dark:border-gray-600  bg-gray-50 dark:bg-[#181818] dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+            rows={18} // Default for mobile
+            className="w-full border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none md:rows-10"
           />
         </div>
+
 
 
         {/* Files */}
@@ -120,18 +124,18 @@ export default function ProfessionalEmail({ initialSubject, initialBody, templat
           </div>
 
           {/* 📤 Send Email */}
-        {/* 📤 Send Email */}
-<div className="flex justify-end">
-  <button
-    onClick={handleSendEmail}
-    disabled={loading} // use `loading` here
-    className={`bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-3 rounded-lg flex items-center justify-center space-x-2 font-medium transition-all duration-200
+          {/* 📤 Send Email */}
+          <div className="flex justify-end">
+            <button
+              onClick={handleSendEmail}
+              disabled={loading} // use `loading` here
+              className={`bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-3 rounded-lg flex items-center justify-center space-x-2 font-medium transition-all duration-200
       ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:from-green-700 hover:to-emerald-700'}`}
-  >
-    <Send className="h-4 w-4" />
-    <span>{loading ? 'Sending...' : 'Send Email'}</span>
-  </button>
-</div>
+            >
+              <Send className="h-4 w-4" />
+              <span>{loading ? 'Sending...' : 'Send Email'}</span>
+            </button>
+          </div>
 
         </div>
 

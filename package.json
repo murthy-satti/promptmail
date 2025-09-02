@@ -20,7 +20,7 @@
     "nodemailer": "^6.6.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-toastify": "^11.0.5"
+    "react-hot-toast": "^2.6.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -30,9 +30,8 @@
     "tailwindcss": "^4"
   },
   "browserslist": [
-  "defaults",
-  "not IE 11",
-  "last 2 Chrome versions"
-]
-
+    "defaults",
+    "not IE 11",
+    "last 2 Chrome versions"
+  ]
 }
