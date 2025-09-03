@@ -153,12 +153,12 @@ export default function EmailComposer() {
     <main className="grid grid-cols-1 lg:grid-cols-2 gap-5 pt-18 sm:pt-20 min-h-screen">
 
       {/* Email Form */}
-       <section className="flex  ">
+      <section className="flex h-full ">
         {/* Email Form */}
-        <div className="flex-1 bg-white/95 dark:bg-gray-900 backdrop-blur-sm shadow-xl rounded-2xl px-4 py-2 space-y-2">
-          <h2 className="text-xl font-semibold text-purple-700 dark:text-purple-400 ">Compose Email</h2>
+        <div className="flex-1 bg-white/95 dark:bg-gray-900 backdrop-blur-sm shadow-xl rounded-2xl px-2 md:px-4 py-2 flex flex-col">
+          <h2 className="text-xl font-semibold text-purple-700 dark:text-purple-400 mb-4">Compose Email</h2>
 
-          <div className="space-y-4">
+          <div className="flex-1 flex flex-col space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">To :</label>
               <input
@@ -186,8 +186,7 @@ export default function EmailComposer() {
                 placeholder="Your email content will appear here..."
                 value={formData.body}
                 onChange={(e) => setFormData({ ...formData, body: e.target.value })}
-                rows={10}
-                className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                className="w-full h-[60vh] md:h-[40vh]  xl:h-[45vh] 2xl:h-[48vh] border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
               />
             </div>
 
@@ -244,67 +243,67 @@ export default function EmailComposer() {
       </section>
 
       {/* Prompt + Generate */}
-     <section className="flex">
-      <div className="flex-1 bg-gradient-to-br from-white/90 to-purple-50/90 dark:bg-none dark:bg-gray-900 backdrop-blur-sm shadow-xl rounded-2xl py-2 px-4">
-        <div className="flex items-center space-x-2 mb-4">
-          <Sparkles className="h-6 w-6 text-purple-600 dark:text-purple-400" />
-          <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">AI Assistant</h2>
-        </div>
-        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-          Describe the email you want to create and let our AI generate it for you.
-        </p>
-        <textarea
-          placeholder="Example: Write a professional follow-up email for a job interview I had yesterday..."
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          rows={3}
-          className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400 p-3 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none mb-4"
-        />
-        <button
-          onClick={handleGenerate}
-          disabled={loading || !prompt.trim()}
-          className="cursor-pointer w-full bg-gradient-to-r mb-5 from-purple-600 to-pink-600 dark:from-purple-700 dark:to-pink-700 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-pink-700 dark:hover:from-purple-800 dark:hover:to-pink-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 transition-all duration-200"
-        >
-          {loading ? (
-            <>
-              <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
-              <span>Generating...</span>
-            </>
-          ) : (
-            <>
-              <Sparkles className="h-4 w-4" />
-              <span>Generate Email with AI</span>
-            </>
-          )}
-        </button>
-        <p className="pt-2 text-sm text-black dark:text-gray-200">
-          <strong className='text-purple-600 dark:text-purple-400'>Note:</strong> This website does not verify the "To" email address you enter. Please ensure that the recipient's address is correct before sending.
-        </p>
-
-        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md p-5 mt-2">
+      <section className="">
+        <div className=" bg-gradient-to-br from-white/90 to-purple-50/90 dark:bg-none dark:bg-gray-900 backdrop-blur-sm shadow-xl rounded-2xl py-2 px-4 ">
+          <div className="flex items-center space-x-2 mb-4">
+            <Sparkles className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">AI Assistant</h2>
+          </div>
+          <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+            Describe the email you want to create and let our AI generate it for you.
+          </p>
+          <textarea
+            placeholder="Example: Write a professional follow-up email for a job interview I had yesterday..."
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            rows={4}
+            className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400 p-3 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none mb-4 "
+          />
           <button
-            onClick={() => setOpen(!open)}
-            className="flex items-center justify-between w-full text-left text-purple-700 dark:text-purple-400 text-xl font-semibold mb-2"
+            onClick={handleGenerate}
+            disabled={loading || !prompt.trim()}
+            className="cursor-pointer w-full bg-gradient-to-r mb-5 from-purple-600 to-pink-600 dark:from-purple-700 dark:to-pink-700 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-pink-700 dark:hover:from-purple-800 dark:hover:to-pink-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 transition-all duration-200"
           >
-            <span>How PromptMail Works</span>
-            <ChevronDown className={`h-5 w-5 transition-transform ${open ? "rotate-180" : ""}`} />
+            {loading ? (
+              <>
+                <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+                <span>Generating...</span>
+              </>
+            ) : (
+              <>
+                <Sparkles className="h-4 w-4" />
+                <span>Generate Email with AI</span>
+              </>
+            )}
           </button>
+          <p className="pt-2 text-sm text-black dark:text-gray-200">
+            <strong className='text-purple-600 dark:text-purple-400'>Note:</strong> This website does not verify the "To" email address you enter. Please ensure that the recipient's address is correct before sending.
+          </p>
 
-          {open && (
-            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              <p><span className="font-medium text-gray-800 dark:text-gray-100">1. Describe your email:</span> Tell our AI what kind of email you want to send.</p>
-              <p><span className="font-medium text-gray-800 dark:text-gray-100">2. AI generates content:</span> Our AI creates a professional email based on your description.</p>
-              <p><span className="font-medium text-gray-800 dark:text-gray-100">3. Review and edit:</span> Make any changes to the generated email.</p>
-              <p><span className="font-medium text-gray-800 dark:text-gray-100">4. Send:</span> Click send to deliver your email.</p>
-              <p className="pt-2 text-sm text-black dark:text-gray-200">
-                <strong className='text-purple-600 dark:text-purple-400'>Note:</strong> Complete your profile to get fully personalized emails tailored to you.
-              </p>
-            </div>
-          )}
+          <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md p-5 mt-2">
+            <button
+              onClick={() => setOpen(!open)}
+              className="flex items-center justify-between w-full text-left text-purple-700 dark:text-purple-400 text-xl font-semibold mb-2"
+            >
+              <span>How PromptMail Works</span>
+              <ChevronDown className={`h-5 w-5 transition-transform ${open ? "rotate-180" : ""}`} />
+            </button>
+
+            {open && (
+              <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p><span className="font-medium text-gray-800 dark:text-gray-100">1. Describe your email:</span> Tell our AI what kind of email you want to send.</p>
+                <p><span className="font-medium text-gray-800 dark:text-gray-100">2. AI generates content:</span> Our AI creates a professional email based on your description.</p>
+                <p><span className="font-medium text-gray-800 dark:text-gray-100">3. Review and edit:</span> Make any changes to the generated email.</p>
+                <p><span className="font-medium text-gray-800 dark:text-gray-100">4. Send:</span> Click send to deliver your email.</p>
+                <p className="pt-2 text-sm text-black dark:text-gray-200">
+                  <strong className='text-purple-600 dark:text-purple-400'>Note:</strong> Complete your profile to get fully personalized emails tailored to you.
+                </p>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
 
-</section>
+      </section>
     </main>
 
   );
