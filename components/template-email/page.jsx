@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Send } from "lucide-react";
+import toast from 'react-hot-toast';
 
 export default function ProfessionalEmail({ initialSubject, initialBody, templateTitle }) {
   const [to, setTo] = useState("");
@@ -25,13 +26,13 @@ export default function ProfessionalEmail({ initialSubject, initialBody, templat
       const res = await fetch("/api/sendmail", { method: "POST", body: formData });
       const data = await res.json();
       if (res.ok) {
-        alert(`✅ Email sent successfully to ${to}`);
+        toast.success(`Email sent successfully to ${to}`,{icon : "✅"});
         setTo(""); setSubject(""); setBody(""); setFiles([]);
       } else {
-        alert(`❌ Failed: ${data.error || "Unknown error"}`);
+        toast.error(`Failed: ${data.error || "Unknown error"}`,{icon : "❌"});
       }
     } catch (err) {
-      alert(`⚠️ Error: ${err.message}`);
+      toast.error(`Error: ${err.message}`,{icon : "‼️"});
     } finally { setLoading(false); }
   };
 
