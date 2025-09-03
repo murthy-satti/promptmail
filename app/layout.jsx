@@ -34,9 +34,8 @@ export const metadata = {
 
 
 
-export default async function RootLayout({ children }) {
-  const cookieStore =await cookies();
-  const theme = cookieStore.get('theme')?.value || 'light';
+export default function RootLayout({ children }) {
+  const theme = cookies().get('theme')?.value || 'light';
   const isDark = theme === 'dark';
 
   return (

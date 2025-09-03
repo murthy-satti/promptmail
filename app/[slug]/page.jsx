@@ -2,7 +2,7 @@ import ProfessionalEmail from "../../components/template-email/page";
 
 // Server Component
 export default async function TemplatePage({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/templates`, { cache: "no-store" });
 
