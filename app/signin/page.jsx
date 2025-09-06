@@ -20,7 +20,7 @@ export default function SignInBtn() {
 
         <button
           onClick={handleSignin}
-          className="flex items-center justify-center space-x-3 w-full px-6 py-3 bg-white shadow-md border border-gray-300 rounded-lg hover:shadow-lg hover:bg-gray-200 transition"
+          className="flex items-center justify-center space-x-3 w-full px-6 py-3 bg-white shadow-md border border-gray-300 rounded-lg hover:shadow-lg hover:bg-gray-200 transition cursor-pointer"
         >
           <Image
             src="/google.png"
