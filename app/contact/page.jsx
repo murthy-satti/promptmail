@@ -1,6 +1,6 @@
 export default function Contactpage() {
     return (
-        <div className="min-h-screen bg-gray-950  flex items-center justify-center p-2 md:p-4 mt-5 md:mt-2">
+        <div className="min-h-screen dark:bg-gray-950  flex items-center justify-center p-2 md:p-4 mt-5 md:mt-2">
             <div className="w-full max-w-md">
                 <div className="bg-[#202020] rounded-2xl p-2 md:p-4 xl:p-8 border border-gray-700 relative gradient-shadow">
                     <div className="mb-8">

@@ -3,16 +3,16 @@ import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen  text-gray-800 dark:text-gray-200 py-16 px-6">
-      <div className="max-w-7xl mx-auto space-y-12">
+    <main className="min-h-screen  text-gray-800 dark:text-gray-200 py-16 px-2 md:px-4 xl:px-6">
+      <div className="max-w-7xl mx-auto space-y-6 md:space-y-12">
         
         {/* Hero Section */}
-        <section className="text-center space-y-6">
+        <section className="text-center space-y-3 md:space-y-6 mt-2 md:mt-4">
         
-          <h1 className="text-4xl sm:text-5xl font-semisemibold text-black dark:text-[#00F0FF]">
+          <h1 className="text-3xl sm:text-5xl font-semisemibold text-black dark:text-[#00F0FF]">
             About PromptMail
           </h1>
-          <p className="text-lg max-w-2xl mx-auto text-gray-900 dark:text-gray-300">
+          <p className="text-lg max-w-2xl mx-auto text-gray-900 dark:text-gray-300 text-left md:text-center">
             PromptMail is your AI-powered assistant for creating professional, 
             personalized emails in seconds. Whether it’s job applications, 
             introductions, or formal requests — we’ve got you covered.
@@ -46,7 +46,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-semibold text-center text-black dark:text-[#00F0FF]">
             Why Choose PromptMail?
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 xl:gap-6">
             {[
               { title: "AI-Powered", desc: "Leverages AI to craft professional, context-aware emails." },
               { title: "Customizable", desc: "Easily personalize tone, content, and format for your needs." },
@@ -82,6 +82,6 @@ export default function AboutPage() {
           </a>
         </section>
       </div>
-    </div>
+    </main>
   );
 }

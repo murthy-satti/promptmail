@@ -27,9 +27,9 @@ export default async function TemplateLibrary() {
     { image: "/jobemail.png" },
     
     { image: "/jobemail.png" },
+    { image: "/jobemail.png" },
     { image: "/intro.png" },
     
-    { image: "/jobemail.png" },
     { image: "/resignation.png" },
 
     
@@ -37,12 +37,12 @@ export default async function TemplateLibrary() {
   ];
 
   return (
-    <main className=" min-h-screen text-white px-2 sm:px-6 lg:px-6 py-12 mt-10 xl:mt-0">
+    <main className=" min-h-screen text-white px-2 md:px-4 lg:px-6 py-12 mt-6  md:mt-0">
 
       <section className="min-h-screen flex flex-col items-center justify-center">
 
 
-        <article className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-6 gap-6 max-w-full mx-auto">
+        <article className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 md:gap-4 xl:gap-6 max-w-full mx-auto">
           {/* Render Blank Email first */}
           <div className="rounded-xl overflow-hidden shadow-lg bg-[#F1F5FF] dark:bg-gray-900 hover:shadow-xl transition ">
             <img
@@ -50,7 +50,7 @@ export default async function TemplateLibrary() {
               alt={blankEmail.title}
               className="h-25 md:h-30 lg:h-35 w-full object-cover  lg:mb-3"
             />
-            <div className="p-2">
+            <div className="p-2 flex flex-col items-center">
               <h3 className="font-semibold text-sm md:text-base xl:text-lg text-gray-900 dark:text-gray-100">
                 {blankEmail.title}
               </h3>
@@ -75,7 +75,7 @@ export default async function TemplateLibrary() {
                 alt={t.title}
                 className="h-25 md:h-30 lg:h-35 w-full object-cover  xl:mb-3"
               />
-              <div className="p-2">
+              <div className="p-2 flex flex-col items-center">
                 <h3 className="font-semibold text-sm md:text-base xl:text-lg text-gray-900 dark:text-gray-100 whitespace-nowrap">{t.title}</h3>
                 {/* <p className="text-gray-700 dark:text-gray-300 text-sm">{templates[idx]?.description}</p> */}
                 <Link
@@ -90,7 +90,7 @@ export default async function TemplateLibrary() {
           ))}
         </article>
 
-        <article className="w-full text-center px-6 py-8 bg-transparent">
+        <article className="w-full text-center px-1 md:px-4 xl:px-6 py-8 bg-transparent">
           <h2 className="text-2xl md:text-3xl xl:text-4xl font-bold text-gray-800 mb-4 dark:text-gray-100">
             Your trusted online email sending platform, loved by users
           </h2>
