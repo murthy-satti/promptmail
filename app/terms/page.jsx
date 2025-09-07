@@ -17,7 +17,7 @@ export default function TermsAndConditions() {
         </div>
 
         {/* Content Box */}
-        <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-xl rounded-3xl p-6 sm:p-8 lg:p-10 border border-gray-200 dark:border-gray-700 space-y-8">
+        <div className="bg-white/80 dark:bg-[#202020] backdrop-blur-sm shadow-xl rounded-3xl p-6 sm:p-8 lg:p-10 border border-gray-200 dark:border-gray-700 space-y-8">
 
           {/* Section 1 */}
           <section>

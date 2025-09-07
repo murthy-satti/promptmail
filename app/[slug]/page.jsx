@@ -1,4 +1,5 @@
 import ProfessionalEmail from "../../components/template-email/page";
+import NotFound from "../not-found";
 
 // Server Component
 export default async function TemplatePage({ params }) {
@@ -10,7 +11,7 @@ export default async function TemplatePage({ params }) {
   const template = data.templates.find((t) => t.slug === slug);
 
   if (!template) {
-    return <p className="text-center mt-20">Template not found</p>;
+    return <NotFound/>;
   }
 
   return (

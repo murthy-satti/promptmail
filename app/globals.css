@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-
+body {
+  font-family: Inter, sans-serif;
+}
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 ::-webkit-scrollbar{
@@ -10,4 +12,52 @@
 * {
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+
+@property --a {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.gradient-shadow {
+  position: relative;
+  filter: url(#glow);
+}
+
+.gradient-shadow::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  /* background: #202020; */
+  background: #1F2937;
+
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.gradient-shadow::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  background: 
+    repeating-conic-gradient(from var(--a, 0deg), 
+            rgba(250, 56, 35, 0.4) 0% 25%, 
+            transparent 25% 50%, 
+            rgba(27, 31, 228, 0.4) 50% 75%, 
+            transparent 75% 100%);
+  border-radius: inherit;
+  z-index: -1;
+  filter: blur(15px);
+  animation: rotateGradient 6s linear infinite;
+}
+
+.gradient-shadow > * {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes rotateGradient { 
+  to { --a: 360deg; } 
 }

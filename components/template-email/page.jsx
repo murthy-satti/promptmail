@@ -37,13 +37,12 @@ export default function ProfessionalEmail({ initialSubject, initialBody, templat
   };
 
   return (
-    <main className="min-h-screen flex justify-center items-start md:p-8 bg-transparent dark:bg-gray-800">
-      <div className="w-full max-w-4xl bg-[#F1F5FF] dark:bg-gray-800 p-2 md:p-6 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 space-y-6">
+    <main className="min-h-screen flex justify-center items-start md:p-8">
+      <div className="w-full max-w-4xl bg-[#F1F5FF] dark:bg-gray-900 p-2 md:p-6 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 space-y-6">
         <h2 className="text-xl sm:text-2xl font-bold text-center text-gray-800 dark:text-gray-100">
           {templateTitle || "Professional Email Template"}
         </h2>
 
-        {/* To */}
         {/* To */}
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-900 dark:text-gray-300 mb-1">
@@ -54,7 +53,7 @@ export default function ProfessionalEmail({ initialSubject, initialBody, templat
             placeholder="recipient@example.com"
             value={to}
             onChange={(e) => setTo(e.target.value)}
-            className="w-full border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
           />
         </div>
 
@@ -68,7 +67,7 @@ export default function ProfessionalEmail({ initialSubject, initialBody, templat
             placeholder="Email subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            className="w-full border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
           />
         </div>
 
@@ -85,7 +84,7 @@ export default function ProfessionalEmail({ initialSubject, initialBody, templat
             value={body}
             onChange={(e) => setBody(e.target.value)}
             rows={18} // Default for mobile
-            className="w-full border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none md:rows-10"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 p-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none md:rows-10"
           />
         </div>
 

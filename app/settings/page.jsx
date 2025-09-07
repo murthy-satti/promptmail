@@ -70,7 +70,7 @@ const SettingsPage = () => {
     document.documentElement.setAttribute('data-theme', next);
     document.documentElement.classList.toggle('dark', next === 'dark');
     setIsDarkMode(next === 'dark');
-    
+
     // Save to cookie
     document.cookie = `theme=${next}; path=/; max-age=31536000`; // 1 year
   };
@@ -93,19 +93,19 @@ const SettingsPage = () => {
 
       const data = await res.json();
       if (res.ok) {
-      toast.success("Profile updated successfully", {
-  icon: "✅",
-});
+        toast.success("Profile updated successfully", {
+          icon: "✅",
+        });
 
       } else {
         toast.error(`update failed bacause of ${data.message}`, {
-  icon: "❌",
-})
+          icon: "❌",
+        })
       }
     } catch (err) {
       toast.error("Failed to update user data", {
-  icon: "❌",
-})
+        icon: "❌",
+      })
       console.error('Update error:', err);
     }
   };
@@ -118,7 +118,7 @@ const SettingsPage = () => {
 
   return (
     <main className="min-h-screen transition-colors mt-18 duration-200">
-      <div className="max-w-4xl mx-auto p-4 sm:p-6">
+      <div className="max-w-4xl mx-auto p-2 sm:p-6">
 
         {/* Header */}
         <div className="mb-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -132,22 +132,11 @@ const SettingsPage = () => {
             </p>
           </div>
 
-          <nav>
-            <Link
-              href="/"
-              className="inline-block bg-gradient-to-r from-blue-600 to-teal-600 dark:from-blue-800 dark:to-teal-700 
-    text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-purple-700 hover:to-pink-700 dark:hover:from-purple-800 dark:hover:to-pink-800 transition self-start sm:self-auto"
-            >
-              Go to Home
-            </Link>
-          </nav>
+        
         </div>
 
         {/* Settings Content */}
-        <div className="grid gap-4 ">
-
-         
-
+        <div className="grid gap-2 md:gap-4 ">
           {/* Profile Section */}
           <section
             className="p-4 sm:p-6 rounded-xl border bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 shadow-sm dark:shadow-gray-900/20"
@@ -197,7 +186,7 @@ const SettingsPage = () => {
                       placeholder="eg: John Doe"
                       value={formData.name}
                       onChange={handleChange('name')}
-                      className="flex-1 p-2 border border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-900 dark:text-white text-sm"
+                      className="flex-1 p-2 border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-900 dark:text-white text-sm"
                     />
                   </div>
 
@@ -215,7 +204,7 @@ const SettingsPage = () => {
                       placeholder="eg: john@example.com"
                       value={formData.email}
                       readOnly
-                      className="flex-1 p-2 bg-[#d3dbe8] border border-purple-300 rounded-lg focus:outline-none  dark:bg-[#444d5c] dark:text-white text-sm"
+                      className="flex-1 p-2 bg-[#d3dbe8] border border-gray-500 rounded-lg focus:outline-none  dark:bg-[#181818] dark:text-white text-sm"
                     />
                   </div>
 
@@ -233,7 +222,7 @@ const SettingsPage = () => {
                       placeholder="eg: +91-9898989898"
                       value={formData.phoneNumber}
                       onChange={handleChange('phoneNumber')}
-                      className="flex-1 p-2 border border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-900 dark:text-white text-sm"
+                      className="flex-1 p-2 border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-900 dark:text-white text-sm"
                     />
                   </div>
 
@@ -251,7 +240,7 @@ const SettingsPage = () => {
                       placeholder="eg: React, Node.js, MongoDB"
                       value={formData.skills}
                       onChange={handleChange('skills')}
-                      className="flex-1 p-2 border border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-900 dark:text-white text-sm"
+                      className="flex-1 p-2 border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-900 dark:text-white text-sm"
                     />
                   </div>
 
@@ -269,7 +258,7 @@ const SettingsPage = () => {
                       placeholder="eg: 2 years as a full stack developer"
                       value={formData.experience}
                       onChange={handleChange('experience')}
-                      className="flex-1 p-2 border border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-900 dark:text-white text-sm"
+                      className="flex-1 p-2 border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-900 dark:text-white text-sm"
                     />
                   </div>
 
@@ -322,7 +311,7 @@ const SettingsPage = () => {
                 className="mt-4 p-3 sm:p-4 rounded-lg dark:border-gray-700"
               >
                 <div className="space-y-3 sm:space-y-4">
-                  <article className="p-3 sm:p-4 rounded-lg bg-white dark:bg-gray-900 border border-gray-500 dark:border-gray-400">
+                  <article className="p-3 sm:p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-500 dark:border-gray-400">
                     <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-2 text-sm sm:text-base">Terms of Service</h3>
                     <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                       By accessing or using PromptMail, you agree to comply with and be bound by these terms. You must not misuse our platform or attempt unauthorized access.
@@ -335,7 +324,7 @@ const SettingsPage = () => {
                     </p>
 
                   </article>
-                  <article className="p-3 sm:p-4 rounded-lg bg-white dark:bg-gray-900 border border-gray-500 dark:border-gray-400">
+                  <article className="p-3 sm:p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-500 dark:border-gray-400">
                     <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-2 text-sm sm:text-base">Privacy Policy</h3>
                     <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                       We collect only the necessary information to personalize your experience and never share it with third parties without consent. All data is stored securely, and you can request its removal anytime.{" "}
@@ -349,7 +338,7 @@ const SettingsPage = () => {
                     </p>
                   </article>
 
-                  <article className="p-3 sm:p-4 rounded-lg bg-white dark:bg-gray-900 border border-gray-500 dark:border-gray-400">
+                  <article className="p-3 sm:p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-500 dark:border-gray-400">
                     <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-2 text-sm sm:text-base">Cookie Policy</h3>
                     <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                       We use cookies to analyze traffic, remember preferences, and improve our service. By using PromptMail, you consent to our use of cookies in accordance with this policy.
@@ -360,7 +349,7 @@ const SettingsPage = () => {
             )}
           </section>
 
-           {/* Theme Toggle Section */}
+          {/* Theme Toggle Section */}
 
           <section className="p-6 rounded-lg border bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
             <div className="flex items-center justify-between">
@@ -444,7 +433,7 @@ const SettingsPage = () => {
               <footer className="flex gap-3">
                 <button
                   onClick={() => setSignOutModalOpen(false)}
-                  className="cursor-pointer flex-1 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors duration-200 font-medium text-sm"
+                  className="cursor-pointer flex-1 px-4 py-2 rounded-lg border border-gray-500 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors duration-200 font-medium text-sm"
                 >
                   Cancel
                 </button>

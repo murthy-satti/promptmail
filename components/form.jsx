@@ -280,7 +280,7 @@ export default function EmailComposer() {
             <strong className='text-purple-600 dark:text-purple-400'>Note:</strong> This website does not verify the "To" email address you enter. Please ensure that the recipient's address is correct before sending.
           </p>
 
-          <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md p-5 mt-2">
+          <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md p-5 my-2">
             <button
               onClick={() => setOpen(!open)}
               className="flex items-center justify-between w-full text-left text-purple-700 dark:text-purple-400 text-xl font-semibold mb-2"

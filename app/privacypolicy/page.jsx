@@ -17,25 +17,24 @@ export default function PrivacyPolicy() {
                     </p>
                 </div>
 
-                {/* Main Content */}
-                <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-xl rounded-3xl p-6 sm:p-8 lg:p-10 border border-gray-200 dark:border-gray-700">
-
+               {/* Main Content */}
+              <div className="bg-white/80 dark:bg-[#202020] shadow-xl rounded-3xl p-6 sm:p-8 lg:p-10 border border-gray-200 dark:border-gray-700">
 
 
                     {/* Section 1 */}
-                    <section className="mb-8">
+                    <article className="mb-8">
                         <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100 flex items-center">
                             1. Information We Collect
                         </h2>
                         <div className="grid gap-4 sm:grid-cols-1 lg:grid-cols-2">
-                            <div className="bg-green-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-400 dark:border-gray-200">
+                            <div className="bg-green-50 dark:bg-[#333333] rounded-xl p-4 border border-gray-400 dark:border-gray-200">
                                 <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-2">Account Information</h3>
                                 <ul className="text-gray-900 dark:text-gray-200 space-y-1 text-sm">
                                     <li>• Name, email, and profile picture via Google OAuth2</li>
                                     <li>• Skills, experience, and phone number for personalization</li>
                                 </ul>
                             </div>
-                            <div className="bg-green-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-400 dark:border-gray-200">
+                            <div className="bg-green-50 dark:bg-[#333333] rounded-xl p-4 border border-gray-400 dark:border-gray-200">
                                 <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Email Data</h3>
                                 <ul className="text-gray-900 dark:text-gray-200 space-y-1 text-sm">
                                     <li>• Recipient email addresses</li>
@@ -44,19 +43,19 @@ export default function PrivacyPolicy() {
                                 </ul>
                             </div>
                         </div>
-                        <div className="mt-4 bg-gray-200 dark:bg-gray-200/20 rounded-xl p-4 border border-gray-400 dark:border-gray-200">
+                        <div className="mt-4 bg-gray-200 dark:bg-[#282828] rounded-xl p-4 border border-gray-400 dark:border-gray-200">
                             <p className="text-sm text-gray-900 dark:text-gray-100">
                                 <strong>Note:</strong> Access tokens are used temporarily and never stored in our database.
                             </p>
                         </div>
-                    </section>
+                    </article>
 
-                    {/* Section 2 */}
-                    <section className="mb-8">
+                    {/* article 2 */}
+                    <article className="mb-8">
                         <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100 flex items-center">
                             2. How We Use Your Data
                         </h2>
-                        <div className="p-6 bg-green-50 dark:bg-gray-800 rounded-xl border border-gray-400 dark:border-gray-200 space-y-3">
+                        <div className="p-6 bg-green-50 dark:bg-[#333333] rounded-xl border border-gray-400 dark:border-gray-200 space-y-3">
                             <p className="text-gray-900 dark:text-gray-300">
                                 Generate AI-powered email content using Gemini API for personalized communication.
                             </p>
@@ -67,12 +66,12 @@ export default function PrivacyPolicy() {
                                 Personalize and streamline your email experience based on your profile.
                             </p>
                         </div>
-                    </section>
+                    </article>
 
 
 
-                    {/* Section 3 */}
-                    <section className="mb-8">
+                    {/* article 3 */}
+                    <article className="mb-8">
                         <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100 flex items-center">
                             3. Data Sharing & Third Parties
                         </h2>
@@ -100,14 +99,14 @@ export default function PrivacyPolicy() {
                             </p>
 
                         </div>
-                    </section>
+                    </article>
 
-                    {/* Section 4 */}
-                    <section className="mb-8">
+                    {/* article 4 */}
+                    <article className="mb-8">
                         <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100 flex items-center">
                             4. File Uploads & Storage
                         </h2>
-                        <div className="bg-green-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-400 dark:border-gray-200">
+                        <div className="bg-green-50 dark:bg-[#333333] rounded-xl p-6 border border-gray-400 dark:border-gray-200">
                             <div className="flex items-center mb-3">
 
                                 <h3 className="font-bold text-gray-900 dark:text-gray-100">Temporary File Processing</h3>
@@ -119,15 +118,15 @@ export default function PrivacyPolicy() {
                                 All uploaded files are automatically deleted after email processing for maximum security.
                             </p>
                         </div>
-                    </section>
+                    </article>
 
-                    {/* Section 5 */}
-                    <section className="mb-8">
+                    {/* article 5 */}
+                    <article className="mb-8">
                         <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100 flex items-center">
                             5. Data Security & Protection
                         </h2>
                         <div className="grid gap-4 sm:grid-cols-1 lg:grid-cols-2">
-                            <div className="bg-green-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-400 dark:border-gray-200">
+                            <div className="bg-green-50 dark:bg-[#333333] rounded-xl p-4 border border-gray-400 dark:border-gray-200">
                                 <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2 flex items-center">
                                     <span className="mr-2">🔒</span>
                                     Encryption
@@ -136,7 +135,7 @@ export default function PrivacyPolicy() {
                                     All data transmission uses HTTPS encryption to protect your information in transit.
                                 </p>
                             </div>
-                            <div className="bg-green-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-400 dark:border-gray-200">
+                            <div className="bg-green-50 dark:bg-[#333333] rounded-xl p-4 border border-gray-400 dark:border-gray-200">
                                 <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2 flex items-center">
                                     <span className="mr-2">🔐</span>
                                     Authentication
@@ -146,14 +145,14 @@ export default function PrivacyPolicy() {
                                 </p>
                             </div>
                         </div>
-                    </section>
+                    </article>
 
-                    {/* Section 6 */}
-                    <section className="mb-8">
+                    {/* article 6 */}
+                    <article className="mb-8">
                         <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100 flex items-center">
                             6. Data Retention & Deletion
                         </h2>
-                        <div className="bg-green-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-400 dark:border-gray-200">
+                        <div className="bg-green-50 dark:bg-[#333333] rounded-xl p-6 border border-gray-400 dark:border-gray-200">
                             <div className="space-y-3">
                                 <div className="flex items-start">
                                     <p className="text-gray-900 dark:text-gray-100">
@@ -172,14 +171,14 @@ export default function PrivacyPolicy() {
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </article>
 
-                    {/* Section 7 */}
-                    <section className="mb-8">
+                    {/* article 7 */}
+                    <article className="mb-8">
                         <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100 flex items-center">
                             7. Test User Notice
                         </h2>
-                        <div className="bg-green-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-400 dark:border-gray-200">
+                        <div className="bg-green-50 dark:bg-[#333333] rounded-xl p-6 border border-gray-400 dark:border-gray-200">
                             <div className="flex items-center mb-3">
                                 <h3 className="font-bold text-gray-900 dark:text-gray-100">Beta Testing Phase</h3>
                             </div>
@@ -190,15 +189,15 @@ export default function PrivacyPolicy() {
                                 Contact the administrator for access approval and testing participation.
                             </p>
                         </div>
-                    </section>
+                    </article>
 
                   
-                    {/* Contact Section */}
-                    <section className="mb-8">
+                    {/* Contact article */}
+                    <article className="mb-8">
                         <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100 flex items-center">
                             Contact Us
                         </h2>
-                        <div className="bg-green-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-400 dark:border-gray-200">
+                        <div className="bg-green-50 dark:bg-[#333333] rounded-xl p-6 border border-gray-400 dark:border-gray-200">
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                                 <div>
                                     <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Questions about this policy?</h3>
@@ -219,7 +218,7 @@ export default function PrivacyPolicy() {
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </article>
 
                     {/* Footer */}
                     <footer className="text-sm text-gray-900 dark:text-gray-200">
