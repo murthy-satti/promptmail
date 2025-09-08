@@ -9,8 +9,8 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b shadow-lg bg-gradient-to-r from-red-400 via-orange-300 to-red-400 border-purple-500/20 dark:bg-none dark:bg-gray-900">
-      <div className="max-w-full mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-18">
+      <div className="max-w-full mx-auto ">
+        <div className="flex justify-between items-center h-18 px-3 md:px-6 lg:px-8">
           {/* Logo + Title */}
           <div className="flex items-center">
             <Image src="/PM.png" alt="logo" width={60} height={60} priority />
@@ -25,28 +25,24 @@ export default function Navbar() {
               href="/"
               className="flex items-center text-black text-lg font-semibold dark:text-[#00F0FF] hover:opacity-80 transition"
             >
-              {/* <Home className="h-5 w-5 mr-1" /> */}
                Home
             </Link>
             <Link
               href="/about"
               className="flex items-center text-black text-lg font-semibold dark:text-[#00F0FF] hover:opacity-80 transition"
             >
-              {/* <Home className="h-5 w-5 mr-1" /> */}
                About
             </Link>
             <Link
               href="/settings"
               className="flex items-center text-black text-lg font-semibold dark:text-[#00F0FF] hover:opacity-80 transition"
             >
-              {/* <Settings className="h-5 w-5 mr-1" /> */}
                Settings
             </Link>
             <Link
               href="/contact"
               className="flex items-center text-black text-lg font-semibold dark:text-[#00F0FF] hover:opacity-80 transition"
             >
-              {/* <Mail className="h-5 w-5 mr-1" />  */}
               Contact
             </Link>
           </nav>
@@ -62,14 +58,20 @@ export default function Navbar() {
 
         {/* Mobile Dropdown */}
         {isOpen && (
-          <nav className="md:hidden flex flex-col items-center space-y-6 mt-2 pt-3 pb-3 border-t border-gray-200 dark:border-gray-700">
+          <nav className="bg-gray-100 dark:bg-gray-900  md:hidden flex flex-col items-center space-y-6 mt-2 pt-3 pb-3 border-t border-gray-200 dark:border-gray-700">
             <Link
               href="/"
               className="flex items-center text-black text-lg font-semibold dark:text-[#00F0FF] hover:opacity-80 transition"
               onClick={() => setIsOpen(false)}
             >
-              {/* <Home className="h-5 w-5 mr-2" />  */}
               Home
+            </Link>
+            <Link
+              href="/about"
+              className="flex items-center text-black text-lg font-semibold dark:text-[#00F0FF] hover:opacity-80 transition"
+              onClick={() => setIsOpen(false)}
+            >
+              About
             </Link>
             <Link
               href="/settings"

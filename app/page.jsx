@@ -37,7 +37,7 @@ export default async function TemplateLibrary() {
   ];
 
   return (
-    <main className=" min-h-screen text-white px-2 md:px-4 lg:px-6 py-12 mt-6  md:mt-0">
+    <main className=" min-h-screen text-white px-2 md:px-4 lg:px-6 py-12 mt-8  md:mt-0">
 
       <section className="min-h-screen flex flex-col items-center justify-center">
 
@@ -116,7 +116,7 @@ export default async function TemplateLibrary() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6 mb-8">
             <div className="text-center p-6 rounded-lg bg-blue-50 dark:bg-gray-900">
               <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1 md:mb-3">1</div>
-              <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-2">Pick a template</h3>
+              <h3 className="font-bold text-gray-800 dark:text-gray-100 mb-2">Pick a template</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">
                 Start with pre-filled professional templates designed for common email needs.
               </p>
@@ -124,7 +124,7 @@ export default async function TemplateLibrary() {
 
             <div className="text-center p-6 rounded-lg bg-green-50 dark:bg-gray-900">
               <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-3">2</div>
-              <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-2">Edit details</h3>
+              <h3 className="font-bold text-gray-800 dark:text-gray-100 mb-2">Edit details</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">
                 Update recipient, subject, or content as needed before sending.
               </p>
@@ -132,7 +132,7 @@ export default async function TemplateLibrary() {
 
             <div className="text-center p-6 rounded-lg bg-purple-50 dark:bg-gray-900">
               <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-3">3</div>
-              <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-2">Blank Email (Optional)</h3>
+              <h3 className="font-bold text-gray-800 dark:text-gray-100 mb-2">Blank Email (Optional)</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">
                 Want fully AI-generated personalized emails? Choose the <strong>Blank Email</strong> option.
               </p>
@@ -140,7 +140,7 @@ export default async function TemplateLibrary() {
 
             <div className="text-center p-6 rounded-lg bg-orange-50 dark:bg-gray-900">
               <div className="text-3xl font-bold text-orange-600 dark:text-orange-400 mb-3">4</div>
-              <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-2">Send instantly</h3>
+              <h3 className="font-bold text-gray-800 dark:text-gray-100 mb-2">Send instantly</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">
                 Review your draft and click send - your email is delivered.
               </p>
@@ -150,7 +150,7 @@ export default async function TemplateLibrary() {
           <div className="space-y-4 text-center ">
             <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-lg">
               <p className="text-yellow-800 dark:text-yellow-200 text-sm font-light">
-                <strong className="font-semibold"> Note: </strong> Make sure the recipient’s email address is correct before sending. This website doesnt check the "To" email address
+                <strong className="font-bold"> Note: </strong> Make sure the recipient’s email address is correct before sending. This website doesnt check the "To" email address
               </p>
             </div>
 

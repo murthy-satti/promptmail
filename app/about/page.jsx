@@ -21,7 +21,7 @@ export default function AboutPage() {
 
         {/* Mission Section */}
         <section className="grid md:grid-cols-2 gap-10 items-center">
-          <div className="space-y-4">
+          <div className="space-y-2">
             <h2 className="text-2xl font-semibold text-black dark:text-[#00F0FF]">
               Our Mission
             </h2>
