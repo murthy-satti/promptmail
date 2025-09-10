@@ -1,13 +1,17 @@
 import { getToken } from 'next-auth/jwt';
 import { NextResponse } from 'next/server';
 
-const protectedRoutes = ['/', '/settings'];
+// Explicit protected routes
+const protectedRoutes = ['/', '/settings','/contact'];
 
 export async function middleware(req) {
   const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+  const pathname = req.nextUrl.pathname;
 
-
-  const isProtected = protectedRoutes.includes(req.nextUrl.pathname);
+  // Protect: '/' , '/settings' , and dynamic `/slug/page`
+  const isProtected =
+    protectedRoutes.includes(pathname) ||
+    /^\/[^/]+\/page$/.test(pathname); // ✅ match /slug/page
 
   if (isProtected && !token) {
     return NextResponse.redirect(new URL('/signin', req.url));
@@ -16,7 +20,9 @@ export async function middleware(req) {
   return NextResponse.next();
 }
 
-// Only run on these paths
+// ✅ Exclude specific paths without regex groups
 export const config = {
-  matcher: ['/', '/settings'],
+  matcher: [
+    '/((?!api|_next/static|_next/image|pm-logo.png|privacy-policy|terms|signin).*)',
+  ],
 };

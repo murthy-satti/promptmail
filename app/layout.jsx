@@ -5,13 +5,21 @@ import Navbar from "@/components/Navbar";
 import SessionWrapper from "@/components/session";
 import { Toaster } from "react-hot-toast";
 import { cookies } from "next/headers";
+import { Manrope } from 'next/font/google';
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope',
+  display: 'swap',
+  weight: ['300','400','500','600','700'],
+});
 
 
 
 export const metadata = {
-  title: "Prompt Mail",
+  title: "PromptMail",
   description:
-    "PromptMail helps you write and send professional emails using AI and Templates. Just describe your message and let  AI generate and send emails or send emails using templates.",
+    "PromptMail helps you write and send professional emails with AI. Generate or use templates to create job and professional emails easily.",
   keywords: [
     "PromptMail",
     "Email templates",
@@ -22,24 +30,23 @@ export const metadata = {
     "Gmail OAuth2",
     "Next.js email app",
     "auto email writer",
-    
   ],
   authors: [{ name: "Murthy Satti" }],
   creator: "PromptMail",
   icons: {
-    icon: "/PM.png",
+    icon: "/pm-logo.png",
   },
-   metadataBase: new URL("https://promptmail.vercel.app"),
+  metadataBase: new URL("https://promptmail.vercel.app"),
   openGraph: {
     title: "PromptMail - AI Email Generator",
     description:
       "Write and send professional emails instantly with AI. Powered by Gemini API and Gmail OAuth2 for secure delivery.",
-    url: "https://promptmail.vercel.app", // 🔑 replace with your deployed URL
+    url: "https://promptmail.vercel.app",
     siteName: "PromptMail",
     images: [
       {
-        url: "/PM.png", // 🔑 create a 1200x630 image for previews
-        width: 1200,
+        url: "/pm-logo.png",
+        width: 900,
         height: 630,
         alt: "PromptMail AI Email Generator",
       },
@@ -56,6 +63,7 @@ export const metadata = {
 
 
 
+
 export default async function RootLayout({ children }) {
    // ✅ Await cookies() in async Server Component
   const cookieStore = await cookies();
@@ -63,7 +71,7 @@ export default async function RootLayout({ children }) {
   const isDark = theme === 'dark';
 
   return (
-    <html lang="en" suppressHydrationWarning data-theme={theme} className={isDark ? 'dark' : ''}>
+    <html lang="en" suppressHydrationWarning data-theme={theme}  className={`${manrope.variable} ${isDark ? "dark" : ""}`}>
       <body
         className="bg-gradient-to-br from-red-200 via-orange-200 to-red-200 dark:bg-gray-800 dark:bg-none"
       >

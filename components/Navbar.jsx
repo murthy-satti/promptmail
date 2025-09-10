@@ -13,7 +13,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-18 px-3 md:px-6 lg:px-8">
           {/* Logo + Title */}
           <div className="flex items-center">
-            <Image src="/PM.png" alt="logo" width={60} height={60} priority />
+            <Image src="/pm-logo.png" alt="logo" width={60} height={60} priority />
             <h1 className="ml-2 text-xl sm:text-2xl font-bold text-black dark:text-[#00F0FF]">
               PromptMail
             </h1>
