@@ -1,169 +1,140 @@
+import AddNewTemplate from "@/components/addNewTemplate";
 import Link from "next/link";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "./api/auth/[...nextauth]/route"; // adjust path
+import Image from "next/image";
 
-// Server Component
-export default async function TemplateLibrary() {
-  // Fetch templates from API (server-side)
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/templates`, {
-    cache: "no-store",
-  });
-  const data = await res.json();
-  let fetchedTemplates = data.templates || [];
-    // ✅ Sort alphabetically by title
-  fetchedTemplates = fetchedTemplates.sort((a, b) =>
-    a.title.localeCompare(b.title)
-  );
+export default async function TemplateLibraryServer() {
+  // Get session on server
+  const session = await getServerSession(authOptions);
+  const email = session?.user?.email;
 
-  // Static Blank Email
-  const blankEmail = {
-    title: "Blank Email",
-    // description: "Send fresh AI generated emails",
-    image: "/blankemail.png",
-    href: "/blankemail",
-  };
 
-  // Local templates (excluding blank email)
-  const templates = [
-    { image: "/aplogy.webp" },
-    { image: "/jobemail.png" },
-    
-    { image: "/jobemail.png" },
-    { image: "/jobemail.png" },
-    { image: "/intro.png" },
-    
-    { image: "/resignation.png" },
+  // Fetch user data
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/combinedRoute?email=${email}`);
+  const userData = await res.json();
+  // console.log(userData);
+  
 
-    
-    { image: "/sickemail.png" },
-  ];
+  const blankEmail = { title: "Generate Ai Email", image: "/blankemail.png", href: "/blankemail" };
+
+  const howItWorks = [
+    {
+      num: 1,
+      title: "Choose or Add a Template",
+      text: "Select a pre-filled template, a Blank Email for AI-generated content, or add your own custom template.",
+      color: "blue"
+    },
+    {
+      num: 2,
+      title: "Edit Details",
+      text: "Update recipient, subject, or content as needed before sending.",
+      color: "green"
+    },
+    {
+      num: 3,
+      title: "Preview & Personalize",
+      text: "Review the email and personalize content to make it perfect for your recipient.",
+      color: "purple"
+    },
+    {
+      num: 4,
+      title: "Send Instantly",
+      text: "Click send and your email will be delivered immediately with full security.",
+      color: "red"
+    },
+  ]
 
   return (
-    <main className=" min-h-screen text-white px-2 md:px-4 lg:px-6 py-12 mt-8  md:mt-0">
+    <main className="min-h-screen text-gray-900 dark:text-gray-100 px-1 md:px-8 lg:px-16 py-12 space-y-30 mt-10">
 
-      <section className="min-h-screen flex flex-col items-center justify-center">
+      {/* Templates Grid */}
+      <section className="flex flex-col items-center ">
+        <article className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 md:gap-4 max-w-full mx-auto">
 
-
-        <article className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 md:gap-4 xl:gap-6 max-w-full mx-auto">
-          {/* Render Blank Email first */}
-          <div className="rounded-xl overflow-hidden shadow-lg bg-[#F1F5FF] dark:bg-gray-900 hover:shadow-xl transition ">
-            <img
-              src={blankEmail.image || "/blankemail.png"}
+          {/* Blank Email Card */}
+          <div className="rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-900 hover:shadow-2xl transition-transform transform hover:scale-105">
+            <Image
+              src={blankEmail.image}
               alt={blankEmail.title}
-              className="h-25 md:h-30 lg:h-35 w-full object-cover  lg:mb-3"
+              width={500}    // adjust based on your design
+              height={200}   // adjust based on your design
+              className="h-25 md:h-40 w-full object-cover"
             />
-            <div className="p-2 flex flex-col items-center">
-              <h3 className="font-semibold text-sm md:text-base xl:text-lg text-gray-900 dark:text-gray-100">
-                {blankEmail.title}
-              </h3>
-              <Link
-                href={blankEmail.href}
-                className="inline-block mt-3 px-2 md:px-4 py-1 md:py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-medium text-white"
-              >
+
+            <div className="p-2 md:p-3 flex flex-col items-center">
+              <h3 className="font-semibold text-sm md:text-lg text-gray-800 dark:text-gray-100">{blankEmail.title}</h3>
+              <Link href={blankEmail.href} className="mt-2 md:mt-3 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-medium text-white">
                 Use Template
               </Link>
             </div>
-
           </div>
 
-          {/* Render fetched templates */}
-          {fetchedTemplates.map((t, idx) => (
-            <div
-              key={t._id}
-              className="rounded-xl overflow-hidden shadow-lg bg-[#F1F5FF] dark:bg-gray-900 hover:shadow-xl transition"
-            >
-              <img
-                src={templates[idx]?.image || "/blankemail.png"}
-                alt={t.title}
-                className="h-25 md:h-30 lg:h-35 w-full object-cover  xl:mb-3"
-              />
-              <div className="p-2 flex flex-col items-center">
-                <h3 className="font-semibold text-sm md:text-base xl:text-lg text-gray-900 dark:text-gray-100 whitespace-nowrap">{t.title}</h3>
-                {/* <p className="text-gray-700 dark:text-gray-300 text-sm">{templates[idx]?.description}</p> */}
-                <Link
-                  href={`/${t.slug}`}
-                  className="inline-block mt-3 px-2 md:px-4 py-1 md:py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-medium"
-                >
-                  Use Template
-                </Link>
+          {/* User Templates */}
+          {userData?.user?.templates?.length > 0 &&
+            userData.user.templates.map((t, idx) => (
+              <div key={idx} className="rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-900 hover:shadow-2xl transition-transform transform hover:scale-105">
+                <Image
+                  src={t.image || "/blankemail.png"}
+                  alt={t.title}
+                  width={500}   // adjust based on your design
+                  height={200}  // adjust based on your design
+                  className="h-25 md:h-40 w-full object-cover"
+                />
+                <div className="p-2 md:p-3 flex flex-col items-center">
+                  <h3 className="font-semibold text-sm md:text-lg text-gray-800 dark:text-gray-100 truncate">{t.title}</h3>
+                  <Link href={`/${t.slug}`} className="mt-2 md:mt-3 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-medium text-white">
+                    Use Template
+                  </Link>
+                </div>
               </div>
+            ))}
 
-            </div>
-          ))}
-        </article>
-
-        <article className="w-full text-center px-1 md:px-4 xl:px-6 py-8 bg-transparent">
-          <h2 className="text-2xl md:text-3xl xl:text-4xl font-bold text-gray-800 mb-4 dark:text-gray-100">
-            Your trusted online email sending platform, loved by users
-          </h2>
-          <p className="leading-relaxed ">
-            <span className="block font-medium text-blue-700  text-base md:text-lg xl:text-2xl dark:text-blue-400">
-              PromptMail is your simple solution for sending emails easily.
-            </span>
-            <span className="block mt-2 text-sm md:text-lg xl:text-base text-gray-600 dark:text-gray-200">
-              Access all the templates to send enhanced emails easily, straight from your email account, with 100% security.
-            </span>
-          </p>
+          {/* Add New Template */}
+          <AddNewTemplate email={email} />
         </article>
       </section>
 
+      {/* Marketing Section */}
+      <section className="text-center max-w-4xl mx-auto space-y-6">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100">
+          Your trusted online email sending platform
+        </h2>
+        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
+          <span className="block font-medium text-blue-600 dark:text-blue-400">PromptMail is your simple solution for sending emails easily.</span>
+          <span className="block mt-2">Access all the templates to send enhanced emails securely, straight from your email account.</span>
+        </p>
+      </section>
 
-
-      <section className="w-full px-1 md:px-3 lg:px-6 py-3 md:py-5 lg:py-12 ">
-        <div className="max-w-7xl mx-auto ">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100 text-center mb-3 md:mb-5 lg:mb-8">
-            How PromptMail Works
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6 mb-8">
-            <div className="text-center p-6 rounded-lg bg-blue-50 dark:bg-gray-900">
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1 md:mb-3">1</div>
-              <h3 className="font-bold text-gray-800 dark:text-gray-100 mb-2">Pick a template</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
-                Start with pre-filled professional templates designed for common email needs.
-              </p>
+      {/* How PromptMail Works */}
+      <section className="max-w-7xl mx-auto space-y-8">
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 dark:text-gray-100">How PromptMail Works</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {howItWorks.map((step) => (
+            <div key={step.num} className={`text-center p-6 rounded-xl bg-${step.color}-50 dark:bg-gray-900 shadow`}>
+              <div className={`text-3xl font-bold text-${step.color}-600 dark:text-${step.color}-400 mb-2`}>{step.num}</div>
+              <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-2">{step.title}</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">{step.text}</p>
             </div>
+          ))}
+        </div>
 
-            <div className="text-center p-6 rounded-lg bg-green-50 dark:bg-gray-900">
-              <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-3">2</div>
-              <h3 className="font-bold text-gray-800 dark:text-gray-100 mb-2">Edit details</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
-                Update recipient, subject, or content as needed before sending.
-              </p>
-            </div>
-
-            <div className="text-center p-6 rounded-lg bg-purple-50 dark:bg-gray-900">
-              <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-3">3</div>
-              <h3 className="font-bold text-gray-800 dark:text-gray-100 mb-2">Blank Email (Optional)</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
-                Want fully AI-generated personalized emails? Choose the <strong>Blank Email</strong> option.
-              </p>
-            </div>
-
-            <div className="text-center p-6 rounded-lg bg-orange-50 dark:bg-gray-900">
-              <div className="text-3xl font-bold text-orange-600 dark:text-orange-400 mb-3">4</div>
-              <h3 className="font-bold text-gray-800 dark:text-gray-100 mb-2">Send instantly</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
-                Review your draft and click send - your email is delivered.
-              </p>
-            </div>
+        {/* Notes */}
+        <div className="space-y-4 text-center max-w-3xl mx-auto">
+          <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-lg">
+            <p className="text-yellow-800 dark:text-yellow-200 text-sm font-light">
+              <strong>Note:</strong> Make sure the recipient’s email address is correct before sending. This website doesn’t validate the "To" field.
+            </p>
           </div>
-
-          <div className="space-y-4 text-center ">
-            <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-lg">
-              <p className="text-yellow-800 dark:text-yellow-200 text-sm font-light">
-                <strong className="font-bold"> Note: </strong> Make sure the recipient’s email address is correct before sending. This website doesnt check the "To" email address
-              </p>
-            </div>
-
-            <div className="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg">
-              <p className="text-blue-800 dark:text-blue-200 text-sm">
-                <strong>Tip:</strong> Update your profile details for smarter personalization when using AI-generated emails.
-              </p>
-            </div>
+          <div className="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg">
+            <p className="text-blue-800 dark:text-blue-200 text-sm">
+              <strong>Tip:</strong> Update your profile details for smarter personalization when using AI-generated emails.
+            </p>
           </div>
         </div>
       </section>
 
-
     </main>
+
   );
 }

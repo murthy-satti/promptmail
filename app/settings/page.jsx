@@ -33,8 +33,8 @@ const SettingsPage = () => {
     name: '',
     email: '',
     phoneNumber: '',
-    skills: '',
-    experience: '',
+    // skills: '',
+    // experience: '',
   })
 
   const { data: session } = useSession();
@@ -50,8 +50,8 @@ const SettingsPage = () => {
             name: data.user.name || '',
             email: data.user.email || '',
             phoneNumber: data.user.phoneNumber || '',
-            skills: data.user.skills?.join(', ') || '',
-            experience: data.user.experience || '',
+            // skills: data.user.skills?.join(', ') || '',
+            // experience: data.user.experience || '',
           });
         }
       } catch (err) {
@@ -87,7 +87,7 @@ const SettingsPage = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
-          skills: formData.skills.split(',').map(s => s.trim()),
+          // skills: formData.skills.split(',').map(s => s.trim()),
         }),
       });
 
@@ -227,7 +227,7 @@ const SettingsPage = () => {
                   </div>
 
                   {/* Skills */}
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                  {/* <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                     <label
                       htmlFor="skills"
                       className="text-sm font-medium text-gray-800 dark:text-gray-200 sm:w-26"
@@ -242,10 +242,10 @@ const SettingsPage = () => {
                       onChange={handleChange('skills')}
                       className="flex-1 p-2 border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-900 dark:text-white text-sm"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Experience */}
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                  {/* <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                     <label
                       htmlFor="experience"
                       className="text-sm font-medium text-gray-800 dark:text-gray-200 sm:w-26"
@@ -260,7 +260,7 @@ const SettingsPage = () => {
                       onChange={handleChange('experience')}
                       className="flex-1 p-2 border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-900 dark:text-white text-sm"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Update Button */}
                   <footer className="flex justify-end pt-2 gap-5">

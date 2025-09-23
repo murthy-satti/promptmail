@@ -1,20 +1,21 @@
-import { PromptMailUsers } from "@/model/schema";
+// import { PromptMailUsers } from "@/model/schema";
 import { connectDB } from "@/lib/dbConnection";
+import { PM_Users } from "@/model/combinedSchema";
 
 // PATCH: Update user details by email
 export async function PATCH(req) {
   try {
     await connectDB();
     const body = await req.json();
-    const { email, name, phoneNumber, skills, experience } = body;
+    const { email, name, phoneNumber } = body;
 
     if (!email) {
       return Response.json({ success: false, message: "Email is required" }, { status: 400 });
     }
 
-    const updatedUser = await PromptMailUsers.findOneAndUpdate(
+    const updatedUser = await PM_Users.findOneAndUpdate(
       { email },
-      { name, phoneNumber, skills, experience },
+      { name, phoneNumber },
       { new: true, upsert: true } // Create if doesn't exist
     );
 
@@ -37,7 +38,7 @@ export async function GET(req) {
       return Response.json({ success: false, message: "Email query parameter is required" }, { status: 400 });
     }
 
-    const user = await PromptMailUsers.findOne({ email });
+    const user = await PM_Users.findOne({ email });
 
     if (!user) {
       return Response.json({ success: false, message: "User not found" }, { status: 404 });

@@ -7,7 +7,7 @@ export default function AboutPage() {
       <div className="max-w-7xl mx-auto space-y-6 md:space-y-12">
         
         {/* Hero Section */}
-        <section className="text-center space-y-3 md:space-y-6 mt-2 md:mt-4">
+        <article className="text-center space-y-3 md:space-y-6 mt-3 md:mt-4">
         
           <h1 className="text-3xl sm:text-5xl font-semisemibold text-black dark:text-[#00F0FF]">
             About PromptMail
@@ -17,15 +17,15 @@ export default function AboutPage() {
             personalized emails in seconds. Whether it’s job applications, 
             introductions, or formal requests — we’ve got you covered.
           </p>
-        </section>
+        </article>
 
-        {/* Mission Section */}
-        <section className="grid md:grid-cols-2 gap-10 items-center">
+        {/* Mission article */}
+        <article className="grid md:grid-cols-2 gap-10 items-center">
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold text-black dark:text-[#00F0FF]">
               Our Mission
             </h2>
-            <p className="leading-relaxed text-gray-700 dark:text-gray-300">
+            <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-300 font-normal">
               At PromptMail, we believe emails should be simple, smart, 
               and stress-free. Our mission is to empower professionals, 
               students, and job seekers to communicate with confidence 
@@ -39,10 +39,10 @@ export default function AboutPage() {
             height={350}
             className="rounded-xl shadow-lg"
           />
-        </section>
+        </article>
 
-        {/* Features Section */}
-        <section className="space-y-6">
+        {/* Features article */}
+        <article className="space-y-6">
           <h2 className="text-2xl font-semibold text-center text-black dark:text-[#00F0FF]">
             Why Choose PromptMail?
           </h2>
@@ -59,19 +59,19 @@ export default function AboutPage() {
                 key={i}
                 className="p-6 rounded-xl shadow-md bg-[#F1F5FF] dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition"
               >
-                <h3 className="text-lg font-semisemibold mb-2">{f.title}</h3>
-                <p className="text-sm text-gray-900 dark:text-gray-400">{f.desc}</p>
+                <h3 className="text-lg font-semibold mb-2">{f.title}</h3>
+                <p className="text-base text-gray-900 dark:text-gray-400">{f.desc}</p>
               </div>
             ))}
           </div>
-        </section>
+        </article>
 
         {/* Contact CTA */}
-        <section className="text-center space-y-4">
+        <article className="text-center space-y-4">
           <h2 className="text-2xl font-semibold text-black dark:text-[#00F0FF]">
             Get in Touch
           </h2>
-          <p className="text-gray-700 dark:text-gray-300">
+          <p className="text-gray-800 dark:text-gray-300">
             Have questions, feedback, or suggestions? We’d love to hear from you.
           </p>
           <a
@@ -80,7 +80,7 @@ export default function AboutPage() {
           >
             Contact Us
           </a>
-        </section>
+        </article>
       </div>
     </main>
   );

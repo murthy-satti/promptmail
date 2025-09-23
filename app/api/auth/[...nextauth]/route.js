@@ -1,7 +1,8 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { connectDB } from "@/lib/dbConnection";
-import { PromptMailUsers } from "@/model/schema";
+// import { PromptMailUsers } from "@/model/schema";
+import { PM_Users } from "@/model/combinedSchema";
 
 // 🔄 Refresh Access Token with Google
 async function refreshAccessToken(token) {
@@ -61,7 +62,7 @@ export const authOptions = {
 
       if (!profile?.email) return false;
 
-      const existingUser = await PromptMailUsers.findOne({ email: profile.email });
+      const existingUser = await PM_Users.findOne({ email: profile.email });
 
       if (existingUser) {
         existingUser.name = profile.name;
@@ -70,7 +71,7 @@ export const authOptions = {
         existingUser.provider = "google";
         await existingUser.save();
       } else {
-        await PromptMailUsers.create({
+        await PM_Users.create({
           name: profile.name,
           email: profile.email,
           oauthId: profile.sub,

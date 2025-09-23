@@ -60,14 +60,19 @@ export async function POST(req) {
       from: session.user.email, // sender is logged-in user
       to: process.env.CONTACT_RECEIVER, // set your receiver email in .env
       subject: `New Contact Form Message from ${firstName} ${lastName}`,
-      text: `
-        Name: ${firstName} ${lastName}
-        Email: ${email}
-        Phone: ${phone}
-        
-        Message:
-        ${message}
-      `,
+      html: `
+      <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.5;">
+        <h2 style="color: #1E3A8A;">New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Message:</strong></p>
+        <p style="background: #f3f4f6; padding: 10px; border-radius: 5px;">${message}</p>
+        <footer style="margin-top: 20px; font-size: 12px; color: #555;">
+          This email was sent via PromptMail.
+        </footer>
+      </div>
+    `,
     });
 
     return new Response(JSON.stringify({ success: true, result }), {
