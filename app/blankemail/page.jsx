@@ -76,19 +76,26 @@ const BlankEmail = () => {
 
       const data = await res.json();
 
-      if (res.ok && data.text) {
-        const toMatch = data.text.match(/To:\s*(.*)/i);
-        const subjectMatch = data.text.match(/Subject:\s*(.*)/i);
-        const bodyMatch = data.text.match(/Body:\s*([\s\S]*)/i);
+ if (res.ok && data.text) {
+  const toMatch = data.text.match(/To:\s*(.*)/i);
+  const subjectMatch = data.text.match(/Subject:\s*(.*)/i);
+  
+  // Handle cases where "Body:" may not exist
+  const bodyMatch = data.text.match(/Body:\s*([\s\S]*)/i);
+  const body = bodyMatch
+    ? bodyMatch[1].trim()
+    : data.text.replace(/^Subject:.*\n*/, '').replace(/^To:.*\n*/, '').trim();
 
-        setFormData({
-          to: toMatch?.[1]?.trim() || '',
-          subject: subjectMatch?.[1]?.trim() || '',
-          body: bodyMatch?.[1]?.trim() || ''
-        });
+  setFormData({
+    to: toMatch?.[1]?.trim() || '',
+    subject: subjectMatch?.[1]?.trim() || '',
+    body: body
+  });
 
-        setPrompt('');
-      } else {
+  setPrompt('');
+}
+
+  else {
         toast.error('Failed to generate email. Please try again.', {
           icon: "❌",
         });
